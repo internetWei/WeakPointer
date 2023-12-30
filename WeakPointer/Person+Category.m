@@ -12,7 +12,7 @@
 @implementation Person (Category)
 
 - (void)setWeakObj:(NSObject *)val {
-    objc_setAssociatedObject(self, @selector(weakObj), val, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(weakObj), val, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (TestObject *)weakObj {

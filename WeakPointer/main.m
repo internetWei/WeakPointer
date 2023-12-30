@@ -38,7 +38,7 @@ int main(int argc, const char * argv[]) {
         TestObject *obj = [[TestObject alloc] init];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-unsafe-retained-assign"
-        person.weakObj = (__bridge_transfer id)(void *)lil_objc_category_storeWeak(person, "weakObj", obj);// 等价于 `per.weakObj = obj;`
+        person.weakObj = (__bridge id)(void *)lil_objc_category_storeWeak(person, "weakObj", obj);// 等价于 `per.weakObj = obj;`
 #pragma clang diagnostic pop
         
         NSLog(@"TestObject 对象释放前对 Person 对象的分类弱属性的打印：person.weakObj: %@", person.weakObj);
