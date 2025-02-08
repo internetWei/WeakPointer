@@ -19,9 +19,10 @@ int main(int argc, const char * argv[]) {
     
     {
         Person *p = [[Person alloc] init];
-        // 实际开发中，编译器会将 `weakP1 = p;` 自动转换成以下类似代码。
-        weakP1 = (__bridge id)(void *)lil_objc_storeWeak((void *)&weakP1, p);// 等价于 `weakP1 = p;`
-        weakP2 = (__bridge id)(void *)lil_objc_storeWeak((void *)&weakP2, p);// 等价于 `weakP2 = p;`
+        
+        // 编译器会将 `weakP1 = p;` 自动转换成以下类似代码。
+        lil_objc_storeWeak((void *)&weakP1, p);// 等价于 `weakP1 = p;`
+        lil_objc_storeWeak((void *)&weakP2, p);// 等价于 `weakP2 = p;`
         
         NSLog(@"Person 对象释放前对弱指针的打印：weakP1: %@, weakP2: %@", weakP1, weakP2);
     }
